@@ -1,0 +1,63 @@
+```html
+<div class="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 min-h-screen w-full p-6">
+  <div class="max-w-3xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8 pt-6">
+      <h1 class="text-5xl text-white font-bold mb-2 drop-shadow-lg">Quick Note</h1>
+      <p class="text-purple-200 text-lg">Capture your thoughts instantly</p>
+    </div>
+
+    <!-- Note Input Card -->
+    <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-6 mb-6">
+      <label class="block text-gray-700 font-semibold mb-3 text-lg">New Note</label>
+      <textarea
+        [(ngModel)]="noteText"
+        placeholder="Write your note here..."
+        class="w-full h-40 p-4 border-2 border-gray-200 rounded-2xl mb-4 text-gray-700 text-base resize-none focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 transition-all"
+      ></textarea>
+      <button 
+        (click)="addNote()" 
+        class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white text-lg font-bold h-14 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+        Add Note
+      </button>
+    </div>
+
+    <!-- Notes List Header -->
+    <div class="flex items-center justify-between mb-4 px-2">
+      <h2 class="text-3xl text-white font-bold drop-shadow-md">Your Notes</h2>
+      <span class="bg-white/20 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-semibold">
+        {{ notes?.length || 0 }} notes
+      </span>
+    </div>
+
+    <!-- Notes List -->
+    <div class="space-y-4">
+      <div 
+        *ngFor="let note of notes; let i = index" 
+        class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.01]">
+        <div class="flex items-start gap-4">
+          <div class="flex-1">
+            <p class="text-gray-800 text-base leading-relaxed break-words">{{ note }}</p>
+          </div>
+          <button 
+            (click)="deleteNote(i)" 
+            class="bg-gradient-to-r from-red-400 to-pink-400 hover:from-red-500 hover:to-pink-500 text-white font-semibold px-5 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 whitespace-nowrap">
+            Delete
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!notes || notes.length === 0" class="text-center py-12">
+        <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8">
+          <svg class="w-16 h-16 mx-auto mb-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <p class="text-white/80 text-lg font-medium">No notes yet</p>
+          <p class="text-white/60 text-sm mt-2">Add your first note above to get started</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
