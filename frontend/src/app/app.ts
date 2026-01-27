@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Notes } from './notes/notes'
+import { Notes } from './notes/notes';
 
 @Component({
   selector: 'app-root',
