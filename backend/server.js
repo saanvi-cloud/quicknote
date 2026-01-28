@@ -1,20 +1,28 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-
 const notesRoutes = require('./routes/notes');
 
 const app = express();
 
+// Connect DB
 connectDB();
 
-app.use(cors());
+// Middleware
+app.use(cors({ origin: '*' }));
 app.use(express.json());
+
+// Routes
+app.get('/', (req, res) => {
+  res.send('QuickNote API is running');
+});
 
 app.use('/api/notes', notesRoutes);
 
-const PORT = 3000;
+// PORT FIX (IMPORTANT)
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
