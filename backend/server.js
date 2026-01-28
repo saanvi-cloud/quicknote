@@ -17,7 +17,7 @@ connectDB();
 app.use(cors({
   origin: [
     'http://localhost:4200',
-    'https://quicknote-frontend.onrender.com'
+    'https://quicknote-1-8tnr.onrender.com'
   ]
 }));
 
