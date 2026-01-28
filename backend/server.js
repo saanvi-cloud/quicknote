@@ -14,7 +14,13 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: [
+    'http://localhost:4200',
+    'https://quicknote-frontend.onrender.com'
+  ]
+}));
+
 app.use(express.json());
 
 // Routes
