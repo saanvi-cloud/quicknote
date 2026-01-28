@@ -1,4 +1,7 @@
 require('dotenv').config();
+console.log('Starting QuickNote backend...');
+console.log('DB connect function called');
+
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
